@@ -6,7 +6,7 @@ export default function Page() {
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         You Can Only Read This Once.
       </h1>
-      <p className="mb-4 text-justify">
+      <p className="mb-4 text-justify leading-loose">
         {`Welcome to a unique blogging experience where every read is a singular journey.
         My philosophy is simple: each post is meant to be absorbed fully in one sitting. 
         I hope that by limiting access to a single read, you'll approach each article with heightened focus, 

@@ -49,8 +49,27 @@ function getMDXData(dir) {
   })
 }
 
+// export function getBlogPosts() {
+//   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
+// }
+
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
+  try {
+    const dir = path.join(process.cwd(), 'app', 'blog', 'posts')
+    console.log('Attempting to read directory:', dir)
+    
+    if (!fs.existsSync(dir)) {
+      console.error('Directory does not exist:', dir)
+      return []
+    }
+    
+    const posts = getMDXData(dir)
+    console.log('Found posts:', posts.map(p => p.slug))
+    return posts
+  } catch (error) {
+    console.error('Error in getBlogPosts:', error)
+    return []
+  }
 }
 
 export function formatDate(date: string, includeRelative = false) {

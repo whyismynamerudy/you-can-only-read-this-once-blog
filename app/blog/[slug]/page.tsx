@@ -6,8 +6,13 @@ import { baseUrl } from 'app/sitemap'
 export async function generateStaticParams() {
   let posts = getBlogPosts()
 
+  if (!posts || !Array.isArray(posts)) {
+    console.error('getBlogPosts() did not return an array');
+    return [];
+  }
+
   return posts.map((post) => ({
-    slug: post.slug,
+    slug: post?.slug || '',
   }))
 }
 
