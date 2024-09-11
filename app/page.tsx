@@ -4,14 +4,18 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+        You Can Only Read This Once.
       </h1>
-      <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+      <p className="mb-4 text-justify">
+        {`Welcome to a unique blogging experience where every read is a singular journey.
+        My philosophy is simple: each post is meant to be absorbed fully in one sitting. 
+        I hope that by limiting access to a single read, you'll approach each article with heightened focus, 
+        taking the most value from its content. This approach challenges the norm of 
+        endless scrolling and rereading, instead promoting a more mindful and impactful 
+        reading experience. I kindly ask my readers to respect this concept by refraining 
+        from taking screenshots or copying text, and preserving the intended experience for 
+        all. Dive in, absorb, and carry forward what resonates with you – because here, 
+        every read is truly once-in-a-lifetime.`}
       </p>
       <div className="my-8">
         <BlogPosts />
