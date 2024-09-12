@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
+import { CustomMDX } from 'app/components/mdx';
+import FingerprintChecker from 'app/components/FingerprintChecker';
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   let posts = getBlogPosts()
 
   if (!posts || !Array.isArray(posts)) {
@@ -17,7 +18,9 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+  let posts = getBlogPosts()
+  let post = posts.find((post) => post.slug === params.slug)
+
   if (!post) {
     return
   }
@@ -56,13 +59,7 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
-
-  if (!post) {
-    notFound()
-  }
-
+function BlogContent({post}) {
   return (
     <section>
       <script
@@ -100,4 +97,21 @@ export default function Blog({ params }) {
       </article>
     </section>
   )
+}
+
+export default function Blog({ params }) {
+  let posts = getBlogPosts()
+  let post = posts.find((post) => post.slug === params.slug)
+
+  if (!post) {
+    notFound()
+  }
+
+  // return <BlogPost post={post} />
+  return (
+    <FingerprintChecker slug={params.slug}>
+      <BlogContent post={post} />
+    </FingerprintChecker>
+  )
+  
 }

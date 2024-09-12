@@ -1,6 +1,14 @@
 import fs from 'fs'
 import path from 'path'
 
+// let fs: typeof import('fs')
+// let path: typeof import('path')
+
+// if (typeof window === 'undefined') {
+//   fs = require('fs')
+//   path = require('path')
+// }
+
 type Metadata = {
   title: string
   publishedAt: string
@@ -71,6 +79,32 @@ export function getBlogPosts() {
     return []
   }
 }
+
+// export async function getBlogPosts() {
+//   if (typeof window !== 'undefined') {
+//     // Client-side: fetch posts from an API endpoint
+//     const response = await fetch('/api/blog-posts')
+//     return response.json()
+//   }
+
+//   // Server-side: use fs to read posts
+//   try {
+//     const dir = path.join(process.cwd(), 'app', 'blog', 'posts')
+//     console.log('Attempting to read directory:', dir)
+    
+//     if (!fs.existsSync(dir)) {
+//       console.error('Directory does not exist:', dir)
+//       return []
+//     }
+    
+//     const posts = getMDXData(dir)
+//     console.log('Found posts:', posts.map(p => p.slug))
+//     return posts
+//   } catch (error) {
+//     console.error('Error in getBlogPosts:', error)
+//     return []
+//   }
+// }
 
 export function formatDate(date: string, includeRelative = false) {
   let currentDate = new Date()
