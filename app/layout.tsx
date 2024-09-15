@@ -4,7 +4,6 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from './components/nav'
 import Footer from './components/footer'
-import { Analytics } from "@vercel/analytics/react"
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
@@ -59,7 +58,6 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <Analytics />
         </main>
       </body>
     </html>
