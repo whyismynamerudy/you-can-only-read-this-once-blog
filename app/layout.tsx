@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from './components/nav'
 import Footer from './components/footer'
+import { Analytics } from "@vercel/analytics/react"
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     default: 'You Can Only Read This Once',
     template: '%s | You Can Only Read This Once',
   },
-  description: 'This is my portfolio.',
+  description: 'You can only read this blog once.',
   openGraph: {
     title: 'You Can Only Read This Once',
     description: 'This is a blog where you can only read a blog post once.',
@@ -58,6 +59,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Analytics />
         </main>
       </body>
     </html>
