@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState, useRef } from 'react';
 import { getFingerprint } from "@thumbmarkjs/thumbmarkjs";
+import Comments from './Comments';
 
 function FingerprintChecker({ slug, children }) {
   const [hasRead, setHasRead] = useState(false);
@@ -43,10 +44,15 @@ function FingerprintChecker({ slug, children }) {
         <h1 className="title font-semibold text-2xl tracking-tighter">
           You've already read this post
         </h1>
-        <p>This blog post is only available to read once.</p>
-        <a href="/blog" className="text-blue-500 hover:underline">
-          Back to blog list
-        </a>
+        <p className="mb-8">This blog post is only available to read once.</p>
+        <div>
+          <Comments slug={slug} />
+        </div>
+        <div className="mt-8">
+          <a href="/blog" className="text-blue-500 hover:underline">
+            Back to blog list
+          </a>
+        </div>
       </section>
     );
   }

@@ -3,6 +3,7 @@ import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import { CustomMDX } from 'app/components/mdx';
 import FingerprintChecker from 'app/components/FingerprintChecker';
+import Comments from 'app/components/Comments';
 
 export function generateStaticParams() {
   let posts = getBlogPosts()
@@ -95,6 +96,7 @@ function BlogContent({post}) {
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
+      <Comments slug={post.slug} />
     </section>
   )
 }
